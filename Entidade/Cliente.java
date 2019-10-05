@@ -3,12 +3,12 @@ package Entidade;
 import java.util.ArrayList;
 
 public class Cliente {
-    int codigo;
-    String cpf;
-    String nome;
-    String email;
-    String senha;
-    ArrayList<String> enderecos;
+    private int codigo;
+    private String cpf;
+    private String nome;
+    private String email;
+    private String senha;
+    private ArrayList<String> enderecos;
 
     public Cliente(int codigo, String cpf, String nome, String email, String senha, String endereco){
         this.enderecos = new ArrayList<String>();
@@ -47,12 +47,13 @@ public class Cliente {
         }
         return -1;
     }
-    public void adiciona_endereco(String endereco){
+    public String adiciona_endereco(String endereco){
         enderecos.add(endereco);
+        return endereco;
     }
 
-    public void remove_endereco(String endereco){
-            enderecos.remove(endereco);
+    public void remove_endereco(int index){
+            enderecos.remove(index);
     }
 
     public void set_endereco(int index, String endereco){

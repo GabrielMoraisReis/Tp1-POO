@@ -6,7 +6,7 @@ import Entidade.Produto;
 import java.util.ArrayList;
 
 public class DaoProduto {
-    ArrayList<Produto> lista_produtos;
+    private ArrayList<Produto> lista_produtos;
 
     public DaoProduto(){
         this.lista_produtos = new ArrayList<Produto>();
@@ -35,7 +35,7 @@ public class DaoProduto {
         return false;
     }
 
-    public Produto altera(int codigo, int qntd_estoque, String descricao, CategoriaProduto categoria, double preco ){
+    public Produto altera_produto(int codigo, int qntd_estoque, String descricao, CategoriaProduto categoria, double preco ){
         Produto p = pesquisa(codigo);
         if (p!= null){
             p.set_categoria(categoria);
@@ -47,13 +47,9 @@ public class DaoProduto {
         return null;
     }
 
-    public Produto altera_qntd_estoque(int codigo, int modificacao_estoque){
-        Produto p = pesquisa(codigo);
-        if( p!= null ){
-            p.set_estoque(modificacao_estoque);
-            return p;
-        }
-        return null;
+    public Produto altera_qntd_estoque(Produto p, int modificacao_estoque){
+        p.set_estoque(modificacao_estoque);
+        return p;
     }
 
     public ArrayList<Produto> lista_estoque(){ return lista_produtos; }
