@@ -39,14 +39,11 @@ public class ControleProduto {
         return daoProduto.altera_produto(codigo, qntd_estoque, descricao, categoria, preco);
     }
 
-    public Produto altera_estoque(int codigo, int modificacao_estoque){
+   public Produto altera_estoque(int codigo, int modificacao_estoque){
         Produto p =  daoProduto.pesquisa(codigo);
         if(p!=null) {
-            if ((p.get_qtd_estoque() + modificacao_estoque) < 0) {
-                System.out.println("Nao e possivel remover esssa quantidade do estoque");
-                int excede_estoque_por = (-1)*modificacao_estoque - p.get_qtd_estoque();
-                int limite_remocao = (-1)*modificacao_estoque - excede_estoque_por;
-                System.out.println("O maximo que e possivel remover sao " + limite_remocao + " desse produto");
+            if (p.get_qtd_estoque() < modificacao_estoque) {
+                System.out.println("O maximo que e possivel remover sao " + p.get_qtd_estoque() + " desse produto");
             }
             else{
                 daoProduto.altera_qntd_estoque(p, modificacao_estoque);
@@ -55,6 +52,7 @@ public class ControleProduto {
         }
         return null;
     }
+
 
     public ArrayList<Produto> lista_todos(){ return daoProduto.lista_estoque(); }
 
