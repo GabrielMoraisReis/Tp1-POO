@@ -12,9 +12,8 @@ public class DaoVenda {
 
     public DaoVenda(){ lista_vendas = new ArrayList<Venda>(); }
 
-    public Venda insere(int codigo, Cliente cliente, ArrayList<Produto> produtos, ArrayList<Integer> qntd_cada_produto,
-                        String data, StatusVenda status){
-        Venda venda = new Venda(codigo, cliente, produtos, qntd_cada_produto, data, status);
+    public Venda insere(int codigo, Cliente cliente, ArrayList<Produto> produtos, String data, StatusVenda status){
+        Venda venda = new Venda(codigo, cliente, produtos, data, status);
         lista_vendas.add(venda);
         return venda;
     }
@@ -41,7 +40,6 @@ public class DaoVenda {
         Venda v = pesquisa(codigo);
             if(v!=null){
                 v.set_produtos(produtos);
-                v.set_qntd_produtos(qntd_cada_produto);
                 v.set_status(status);
                 return v;
             }
