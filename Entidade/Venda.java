@@ -8,18 +8,14 @@ public class Venda {
     private int codigo;
     private Cliente cliente;
     private ArrayList<Produto> produtos;
-    private ArrayList<Integer> qntd_cada_produto; //posições correspondentes entre um produto e sua quantidade vendida
     private String data;
     private StatusVenda status;
 
-    public Venda(int codigo, Cliente cliente, ArrayList<Produto> produtos, ArrayList<Integer> qntd_cada_produto,
-                 String data, StatusVenda status){
+    public Venda(int codigo, Cliente cliente, ArrayList<Produto> produtos, String data, StatusVenda status){
         this.cliente = cliente;
         this.data = data;
         this.produtos = new ArrayList<Produto>();
         this.produtos = produtos;
-        this.qntd_cada_produto = new ArrayList<Integer>();
-        this.qntd_cada_produto = qntd_cada_produto;
         this.status = StatusVenda.PENDENTE;
     }
 
@@ -33,30 +29,12 @@ public class Venda {
         this.produtos = produtos;
     }
 
-    public void add_produto(Produto produto, int qntd_cada_produto){
+    public void add_produto(Produto produto){
         this.produtos.add(produto);
     }
 
     public void remove_produto(Produto produto){
-        this.produtos.add(produto);
-    }
-
-    public ArrayList<Integer> get_qntd_produtos(){ return qntd_cada_produto; }
-
-    public void set_qntd_produtos(ArrayList<Integer> qntd_cada_produto){
-        this.qntd_cada_produto = qntd_cada_produto;
-    }
-
-    public void add_qntd_produtos(int qntd_produto){
-        qntd_cada_produto.add(qntd_produto);
-    }
-
-    public void dimiui_qntd_produtos(int qntd_produto, int index){
-        qntd_cada_produto.set(index, qntd_produto);
-    }
-
-    public void remove_qntd_produto(int index){
-        qntd_cada_produto.remove(index);
+        this.produtos.remove(produto);
     }
 
     public String get_data(){ return data; }
